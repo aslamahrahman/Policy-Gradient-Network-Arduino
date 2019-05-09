@@ -17,7 +17,7 @@ class episodes {
     float reward;
 };
 
-class QL_MODEL {
+class PG_MODEL {
   public:
     int num_actions;
     float **y;
@@ -71,7 +71,7 @@ class QL_MODEL {
     /*END NEURAL NETWORK STUFF----------------------*/
 
     /*BEGIN CONSTRUCTORS & INITIALIZERS--------------*/
-    QL_MODEL(QL_MODEL::ACTIVATION a, QL_MODEL::OPTIMIZER algo, const int16_t *layers_p, int num_actions, float learning_rate, float discount_rate, float reward_amplifier) {
+    PG_MODEL(PG_MODEL::ACTIVATION a, PG_MODEL::OPTIMIZER algo, const int16_t *layers_p, int num_actions, float learning_rate, float discount_rate, float reward_amplifier) {
       this->activation_func = a;
       this->op_algo = algo;
       this->layers = layers_p;
@@ -83,7 +83,7 @@ class QL_MODEL {
       this->xavier_init();
     }
     
-    QL_MODEL(QL_MODEL::ACTIVATION a, QL_MODEL::OPTIMIZER algo, float beta_1, const int16_t *layers_p, int num_actions, float learning_rate, float discount_rate, float reward_amplifier) {
+    PG_MODEL(PG_MODEL::ACTIVATION a, PG_MODEL::OPTIMIZER algo, float beta_1, const int16_t *layers_p, int num_actions, float learning_rate, float discount_rate, float reward_amplifier) {
       this->activation_func = a;
       this->op_algo = algo;
       this->op_beta_1 = beta_1;
@@ -96,7 +96,7 @@ class QL_MODEL {
       this->xavier_init();
     }
 
-    QL_MODEL(QL_MODEL::ACTIVATION a, QL_MODEL::OPTIMIZER algo, float beta_1, float beta_2, const int16_t *layers_p, int num_actions, float learning_rate, float discount_rate, float reward_amplifier) {
+    PG_MODEL(PG_MODEL::ACTIVATION a, PG_MODEL::OPTIMIZER algo, float beta_1, float beta_2, const int16_t *layers_p, int num_actions, float learning_rate, float discount_rate, float reward_amplifier) {
       this->activation_func = a;
       this->op_algo = algo;
       this->op_beta_1 = beta_1;

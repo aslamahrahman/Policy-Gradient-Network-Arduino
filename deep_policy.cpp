@@ -7,7 +7,7 @@ Matrix matq;
 
 #define DEBUG false
 
-void QL_MODEL::allocate_params() {
+void PG_MODEL::allocate_params() {
   int i=0;
 
   for(i=0; i<max_episodes; i++) {
@@ -59,7 +59,7 @@ void QL_MODEL::allocate_params() {
   return;
 }
 
-void QL_MODEL::xavier_init() {
+void PG_MODEL::xavier_init() {
   int l, i, j;
 
   for(l=0; l<num_layers-1; l++) {
@@ -78,7 +78,7 @@ void QL_MODEL::xavier_init() {
   return;
 }
 
-void QL_MODEL::forward_pass(int16_t **x) {
+void PG_MODEL::forward_pass(int16_t **x) {
   this->x_float = matq.int_to_float(this->x_float, x, this->layers[0], 1);
   this->fp_H[0] = matq.copy_to_existing(this->fp_H[0], this->x_float, this->layers[0], 1);
   
@@ -116,7 +116,7 @@ void QL_MODEL::forward_pass(int16_t **x) {
   return;
 }
 
-void QL_MODEL::back_propagate(int episode) {
+void PG_MODEL::back_propagate(int episode) {
   int l = num_layers-2;
 
   this->bp_grad_layer[l] = matq.grad_softmax_mat(this->bp_grad_layer[l], this->z[l], this->layers[l+1], 1);
@@ -204,12 +204,12 @@ void QL_MODEL::back_propagate(int episode) {
   return;
 }
 
-void QL_MODEL::predict(int16_t **x) {
+void PG_MODEL::predict(int16_t **x) {
   this->forward_pass(x);
   return;
 }
 
-void QL_MODEL::free_model() {
+void PG_MODEL::free_model() {
   delete(this->y); this->y = NULL;
 
   int i;

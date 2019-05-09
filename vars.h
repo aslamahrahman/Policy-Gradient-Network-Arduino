@@ -56,7 +56,7 @@ const int resolution = 8;
 /*END LEDC STUFF-------------------------------------------*/
 
 /*BEGIN Q LEARNING STUFF------------------------------*/
-QL_MODEL *agent;
+PG_MODEL *agent;
 const int num_inputs = 1;
 const int num_actions = 5;
 int actions[num_actions] = {-255, -200, 0, 200, 255};

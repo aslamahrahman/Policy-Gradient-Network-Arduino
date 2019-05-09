@@ -1,4 +1,4 @@
-#include "deep_policy.h"
+m#include "deep_policy.h"
 #include "vars.h"
 
 #pragma once
@@ -98,7 +98,7 @@ void initialize() {
   /*END MOTOR STUFF-------------------------------------*/
 
   /*BEGIN Q LEARNING STUFF------------------------------*/
-  agent = new QL_MODEL(QL_MODEL::ACTIVATION::RELU, QL_MODEL::OPTIMIZER::SGD, rmsprop_beta_1, layers_p, num_actions, learning_rate, discount_rate, reward_amplifier);
+  agent = new PG_MODEL(PG_MODEL::ACTIVATION::RELU, PG_MODEL::OPTIMIZER::SGD, rmsprop_beta_1, layers_p, num_actions, learning_rate, discount_rate, reward_amplifier);
   /*END Q LEARNING STUFF------------------------------*/
 }
 

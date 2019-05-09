@@ -7,7 +7,7 @@ Matrix matqm;
 
 #define DEBUG false
 
-void QL_MODEL::insert_episodes(int16_t **state_now, float **action, float reward, int episode_counter) {
+void PG_MODEL::insert_episodes(int16_t **state_now, float **action, float reward, int episode_counter) {
   matqm.copy_to_existing(this->mem[episode_counter].state_now, state_now, this->layers[0], 1);
   matqm.copy_to_existing(this->mem[episode_counter].action, action, this->layers[num_layers-1], 1);
   this->mem[episode_counter].reward = reward;
@@ -15,7 +15,7 @@ void QL_MODEL::insert_episodes(int16_t **state_now, float **action, float reward
   return;
 }
 
-void QL_MODEL::discount_and_normalize_rewards() {
+void PG_MODEL::discount_and_normalize_rewards() {
   int e, j;
   
   float cumulative = 0.0f;
